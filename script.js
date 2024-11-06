@@ -211,7 +211,7 @@ async function sendMessage() {
 
     // Call the backend (Google API) for other responses
     try {
-        const response = await fetch("http://localhost:3000/generate", {
+        const response = await fetch("https://chat-bot-stom.onrender.com/generate", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
