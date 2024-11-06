@@ -1,0 +1,132 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Container Styling */
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+}
+
+.chat-container {
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    padding: 1rem;
+    background-color: #0078d4;
+    color: #ffffff;
+}
+
+.chat-box {
+    padding: 1rem;
+    height: 400px;
+    overflow-y: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.message {
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.message.user {
+    background-color: #e0f7fa;
+    align-self: flex-end;
+}
+
+.message.storm {
+    background-color: #cfe9f1;
+    align-self: flex-start;
+}
+
+.input-container {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+#user-input {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    outline: none;
+}
+
+#send-btn {
+    padding: 1rem;
+    background-color: #0078d4;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+#send-btn:hover {
+    background-color: #005bb5;
+}
+
+
+/* CSS for the speaker and stop icons */
+.speaker-container {
+    cursor: pointer;
+    margin-left: 8px;
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+.speaker-icon, .stop-icon {
+    width: 20px;
+    height: 20px;
+    color: #007bff;
+    transition: opacity 0.3s ease;
+}
+
+.speaker-icon:hover, .stop-icon:hover {
+    color: #0056b3; /* Change color on hover */
+}
+
+/* Tooltip styles */
+.speaker-container[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    white-space: nowrap;
+    font-size: 12px;
+    opacity: 1;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.speaker-container[title]:hover::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent;
+}
+
