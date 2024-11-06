@@ -1,132 +1,243 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+
+    /* Styling for STORM in red */
+.storm-title {
+    color: #ff0000; /* Red color */
+    font-weight: bold;
 }
 
-/* Container Styling */
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+/* Styling for CREATED BY SHOAIB in green */
+.creator {
+    color: #0f0; /* Green color */
+    font-weight: normal;
 }
 
-.chat-container {
-    width: 400px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-}
 
-h1 {
-    text-align: center;
-    padding: 1rem;
-    background-color: #0078d4;
-    color: #ffffff;
-}
 
-.chat-box {
-    padding: 1rem;
-    height: 400px;
-    overflow-y: auto;
-    border-bottom: 1px solid #ddd;
-}
 
+
+
+
+/* Message styling */
 .message {
-    padding: 0.5rem 1rem;
-    margin: 0.5rem 0;
+    padding: 8px 10px;
     border-radius: 5px;
-    max-width: 80%;
+    margin: 5px 0;
+    font-size: 0.9em;
 }
 
+/* User message */
 .message.user {
-    background-color: #e0f7fa;
-    align-self: flex-end;
+    background-color: #00000000; /* Slightly lighter dark color */
+    color: #0f0; /* Light green text */
+    text-align: right;
 }
 
+/* Bot message */
 .message.storm {
-    background-color: #cfe9f1;
-    align-self: flex-start;
+    background-color: #161c0a82; /* Dark color for bot messages */
+    color: rgb(255, 255, 255); /* Light green text */
+    text-align: left;
 }
 
 .input-container {
     display: flex;
-    border-top: 1px solid #ddd;
+    width: 100%;
+    /* Optional: Add height here if needed */
 }
 
 #user-input {
     flex: 1;
-    padding: 1rem;
+    padding: 1rem; /* Adjust padding for height */
     border: none;
     outline: none;
+    background: #222;
+    color: #0f0;
+    font-size: 1em;
+    border-radius: 4px 0 0 4px;
 }
 
 #send-btn {
-    padding: 1rem;
-    background-color: #0078d4;
-    color: #ffffff;
+    padding: 1rem; /* Adjust padding to control button height */
+    background-color: #0f0;
+    color: #000;
     border: none;
     cursor: pointer;
+    font-weight: bold;
+    border-radius: 0 4px 4px 0;
 }
 
+
+/* Send button hover effect */
 #send-btn:hover {
-    background-color: #005bb5;
+    background-color: #0a0; /* Slightly darker green on hover */
+}
+
+/* Scrollbar styling for chat box */
+.chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background-color: #0f0; /* Green scrollbar thumb */
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background: #111; /* Dark track to blend with the background */
 }
 
 
-/* CSS for the speaker and stop icons */
-.speaker-container {
-    cursor: pointer;
-    margin-left: 8px;
-    vertical-align: middle;
-    display: inline-flex;
+
+
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+}
+
+/* Body styling */
+body {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    position: relative;
-    transition: color 0.2s ease;
+    min-height: 100vh;
+    background: #000;
 }
 
-.speaker-icon, .stop-icon {
-    width: 20px;
-    height: 20px;
-    color: #007bff;
-    transition: opacity 0.3s ease;
-}
-
-.speaker-icon:hover, .stop-icon:hover {
-    color: #0056b3; /* Change color on hover */
-}
-
-/* Tooltip styles */
-.speaker-container[title]:hover::after {
-    content: attr(title);
+/* Section styles for animated background */
+section {
     position: absolute;
-    top: -30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #333;
-    color: #fff;
-    padding: 5px 8px;
-    border-radius: 5px;
-    white-space: nowrap;
-    font-size: 12px;
-    opacity: 1;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    flex-wrap: wrap;
+    overflow: hidden;
 }
 
-.speaker-container[title]:hover::before {
+section::before {
     content: '';
     position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 6px;
-    border-style: solid;
-    border-color: transparent transparent #333 transparent;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#000, #0f0, #000);
+    animation: animate 5s linear infinite;
+}
+
+/* Animation keyframes */
+@keyframes animate {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
+
+/* Styling for individual spans */
+section span {
+    position: relative;
+    display: block;
+    width: calc(6.25vw - 2px);
+    height: calc(6.25vw - 2px);
+    background: #181818;
+    z-index: 2;
+    transition: 1.5s;
+}
+
+section span:hover {
+    background: #0f0;
+    transition: 0s;
+}
+
+.chat-container {
+    position: relative;
+    z-index: 1000;
+    background: rgba(34, 34, 34, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    width: 600px; /* Set width as desired */
+    height: 500px; /* Set height as desired */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+    color: #0f0;
+    display: flex;
+    flex-direction: column; /* Ensure items are stacked vertically */
+}
+
+
+.chat-container h1 {
+    text-align: center;
+    color: #0f0;
+}
+
+
+
+
+.chat-box {
+    width: 100%; /* Make it fill the container width */
+    height: 500px; /* Set this to the desired height */
+    padding: 1rem;
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    border: 1px solid #333;
+    color: #0f0;
+    background: #111;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+/* Bold text styling */
+.message strong {
+    color: #f21e1e; /* Red color for bold text */
+}
+
+/* General message styling */
+.message {
+    color: rgb(255, 255, 255); /* Light green color for other text */
+    font-size: 0.9em;
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+
+
+
+/* Message content styling */
+.message-content {
+    padding: 8px 10px;
+    background-color: #333; /* Dark background for bot messages */
+    color: #0f0; /* Green text for main content */
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+/* Speaker icon container styling */
+.speaker-icon-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px; /* Space above the icon */
+}
+
+/* Speaker icon styling */
+.speaker-icon {
+    cursor: pointer;
+    fill: #0f0; /* Green color */
+    transition: fill 0.3s ease;
+}
+
+.speaker-icon:hover {
+    fill: #ff0000; /* Red on hover */
 }
 

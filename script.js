@@ -202,7 +202,7 @@ async function sendMessage() {
 
 
     if (/who.*creats.*you/i,
-        /who.*is.*your.*creater/i.test(userText)) {
+        /who.*is.*your.*creator/i.test(userText)) {
         displayMessage("I am created by Ansari Shoaib", "storm");
         return;
     }
